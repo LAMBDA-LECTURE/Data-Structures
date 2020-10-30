@@ -37,7 +37,7 @@ class DoublyLinkedList:
         if self.head is None:
             self.head = new_node
             self.tail = new_node
-            self.length +=1
+            self.length = 1
             return
 
         self.head.prev = new_node
@@ -58,7 +58,7 @@ class DoublyLinkedList:
         if self.head.next is None:
             self.head = None
             self.tail = None
-            self.length 0
+            self.length = 0
             return value
 
         self.head = self.head.next

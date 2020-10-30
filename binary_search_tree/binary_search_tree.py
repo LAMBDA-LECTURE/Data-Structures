@@ -1,7 +1,7 @@
 """
-Binary search trees are a data structure that enforce an ordering over 
-the data they store. That ordering in turn makes it a lot more efficient 
-at searching for a particular piece of data in the tree. 
+Binary search trees are a data structure that enforce an ordering over
+the data they store. That ordering in turn makes it a lot more efficient
+at searching for a particular piece of data in the tree.
 
 This part of the project comprises two days:
 1. Implement the methods `insert`, `contains`, `get_max`, and `for_each`
@@ -9,6 +9,9 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+from queue import queue
+from stack import stack
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -16,13 +19,43 @@ class BSTNode:
         self.right = None
 
     # Insert the given value into the tree
-    def insert(self, value):
-        pass
+    def insert(self, value): # root = 10, value = 2 (the thingy we wanna add)
+        if value < self.value: #if 2 < 10 LEFT
+            if self.left: # (conditional boolean)does the left one exist?
+                self.left.insert(value) # a redo the checks w value here //recursion mind break
+            else:
+                # if the left one doesn't exist, let's add it!
+                self.left = BSTNode(value) # assign that empty left pointer to a new node that we're making with the value
+        else: # when value is >= 10 GO RIGHT
+            if self.right: # is something here?
+                self.right.insert(value) # RECURSION if it's already there
+            else: # it's empty, lets drop it here in a new node
+                self.right = BSTNode(value)
+                # ?celebrate
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        # start at the top/root/self, by calling the fn
+        # if target == self, tada!
+        if target == self.value:
+        # return true if tada
+            return True
+        # is target bigger or smaller than self
+        if target < self.value: # go left and look at the left one?
+            if self.left: #if that left one exists,
+                self.left.contains(target) #loops in loops happily
+            else:
+                return False
+        else: # when target is bigger to self.value
+            if self.right: #exists
+                self.right.contains(target) # recursion it!
+            else: # we hit a dead end, sadface
+                return False # let 'em know
+
+
+            # go left or right until i find it.
+        # returnn false if sadface and it doens't exist
 
     # Return the maximum value found in the tree
     def get_max(self):
@@ -82,4 +115,4 @@ bst.pre_order_dft()
 print("in order")
 bst.in_order_dft()
 print("post order")
-bst.post_order_dft()  
+bst.post_order_dft()
