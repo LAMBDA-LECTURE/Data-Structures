@@ -30,9 +30,11 @@ class DoublyLinkedList:
     as the new head of the list. Don't forget to handle
     the old head node's previous pointer accordingly.
     """
+    # useful to draw out a list of [1,2,3,4] for explaining????
     def add_to_head(self, value):
         new_node = ListNode(value)
         new_node.next = self.head
+        #for teaching consider useing a old_head variable that will be removed later
 
         if self.head is None:
             self.head = new_node
@@ -49,9 +51,12 @@ class DoublyLinkedList:
     current head's next node the new head of the List.
     Returns the value of the removed Node.
     """
+    # [1, 2, 3, 4]
+    #
     def remove_from_head(self):
         if self.head is None:
             return None
+            #why not just return? is this being extra explicit?
 
         value = self.head.value
 
@@ -209,6 +214,9 @@ class DoublyLinkedList:
     in the List.
     """
     def get_max(self):
+        if self.head is None:
+            return None
+
         max_value = self.head.value
 
         pointer = self.head
