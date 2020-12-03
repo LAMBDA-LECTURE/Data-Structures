@@ -79,7 +79,6 @@ class DoublyLinkedList:
     """
     def add_to_tail(self, value):
         new_node = ListNode(value)
-        new_node.prev = self.tail
 
         if self.head is None:
             self.head = new_node
@@ -87,6 +86,7 @@ class DoublyLinkedList:
             self.length = 1
             return
 
+        new_node.prev = self.tail
         self.tail.next = new_node
         self.tail = new_node
         self.length += 1
@@ -128,7 +128,7 @@ class DoublyLinkedList:
             self.tail = node.prev
 
         node.prev.next = node.next
-        node.prev = None
+        # node.prev = None ##josh commented this one out, thinks the one below catches it
         self.head.prev = node
         node.next = self.head
         node.prev = None

@@ -35,10 +35,39 @@ class BSTNode:
 
     # Return True if the tree contains the value
     # False if it does not
+
+    ##Solution from Canvas pre-course
+    # def insert(self, value):
+    #     if value < self.value:
+    #         if self.left is None:
+    #             self.left = BSTNode(value)
+    #         else:
+    #             self.left.insert(value)
+    #     else:
+    #         if self.right is None:
+    #             self.right = BSTNode(value)
+    #         else:
+    #             self.right.insert(value)
+
+    ##Solution from canvas precourse where they called it search
+    def search(self, target):
+        if self.value == target:
+            return self
+        elif target < self.value:
+            if self.left is None:
+                return False
+            else:
+                return self.left.search(target)
+        else:
+            if self.right is None:
+                return False
+            else:
+                return self.right.search(target)
+    ##contains is the actual homework assignment
     def contains(self, target):
         # start at the top/root/self, by calling the fn
         # if target == self, tada!
-        if target == self.value:
+        if target == self.value: #
         # return true if tada
             return True
         # is target bigger or smaller than self
