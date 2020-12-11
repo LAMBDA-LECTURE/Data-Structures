@@ -119,8 +119,21 @@ class BSTNode:
         pass
 
     # Print Post-order recursive DFT
+    def helper(root):
+        if root is None:
+            return
+        helper(root.left)
+        helper(root.right)
+        print(root.value)
+
     def post_order_dft(self):
-        pass
+        # result = []
+        helper(self)
+        # return result
+
+
+
+
 
 """
 This code is necessary for testing the `print` methods

@@ -224,7 +224,7 @@ class DoublyLinkedList:
         while pointer is not None:
             if max_value < pointer.value:
                 max_value = pointer.value
-            pointer = self.head.next
+            pointer = pointer.next
 
         return max_value
 
